@@ -136,17 +136,38 @@
 
 //в іншому випадку виводити рядок "Невірний пароль!"
 
-const login = prompt("enter your login");
-console.log(login);
-if (login === "Admin") {
-  const password = prompt("enter your password");
-  if (password === "Я головний") {
-    alert("Вітаю");
-  } else {
-    alert("Невірний пароль!");
-  }
-} else if (login === null || login === "") {
-  alert("Скасовано");
-} else {
-  alert("Я вас не знаю");
+// const login = prompt("enter your login");
+// console.log(login);
+// if (login === "Admin") {
+//   const password = prompt("enter your password");
+//   if (password === "Я головний") {
+//     alert("Вітаю");
+//   } else {
+//     alert("Невірний пароль!");
+//   }
+// } else if (login === null || login === "") {
+//   alert("Скасовано");
+// } else {
+//   alert("Я вас не знаю");
+// }
+
+//Напиши функцію:
+// Якщо число ділитися на 3 повертати
+//fizz якщо ділитися на 5 повертати buzz
+//Якщо ділитися на 3 і на 5 повернути fizzbuzz
+
+
+function number (num){
+  if(num%3===0&&num%5===0)
+    return "fizzbuzz"
+  
+  if( num%3===0){
+  return "fizz"
 }
+if(num%5===0){
+  return "buzz"
+}
+return "Error"
+}
+
+console.log(number(34))
