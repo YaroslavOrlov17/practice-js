@@ -67,7 +67,6 @@
 // значення '1', то у змінну result запишемо 'зима', якщо має значення
 // '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
 
-
 // const num = Number(prompt("Enter number from 1 to 4"));
 // let result = "";
 
@@ -86,30 +85,68 @@
 //         break;
 //     default:
 //         result = "Enter number from 1 to 4"
-    
+
 // }
 // console.log(result);
 
-function seasons(num) {
-    let result = "";
-    switch (num) {
-    case 1:
-        result = "Winter";
-        break;
-    case 2:
-        result = "Spring";
-        break;
-    case 3:
-        result = "Summer";
-        break;
-    case 4:
-        result = "Autumn";
-        break;
-    default:
-        result = "Enter number from 1 to 4"
-    
-    }
-    return result;
-}
-console.log(seasons(4));
+// function seasons(num) {
+//     let result = "";
+//     switch (num) {
+//     case 1:
+//         result = "Winter";
+//         break;
+//     case 2:
+//         result = "Spring";
+//         break;
+//     case 3:
+//         result = "Summer";
+//         break;
+//     case 4:
+//         result = "Autumn";
+//         break;
+//     default:
+//         result = "Enter number from 1 to 4"
 
+//     }
+//     return result;
+// }
+// console.log(seasons(4));
+
+//Напишіть код, який буде питати
+
+//логін за допомогою prompt и логіровати результат
+
+//в консоль браузера
+
+//Якщо користувач вводить "Адмін",
+
+//то prompt запрашує пароль.
+
+//Якщо ничого не ввели чи нажата клавіша Esc
+
+//вивести строку "Скасовано"
+
+//В противному випадку вивести рядок "Я вас не знаю"
+
+//Пароль перевіряти так:
+
+//Якщо введен пароль "Я головний",
+
+//то вивести рядок "Вітаю!"
+
+//в іншому випадку виводити рядок "Невірний пароль!"
+
+const login = prompt("enter your login");
+console.log(login);
+if (login === "Admin") {
+  const password = prompt("enter your password");
+  if (password === "Я головний") {
+    alert("Вітаю");
+  } else {
+    alert("Невірний пароль!");
+  }
+} else if (login === null || login === "") {
+  alert("Скасовано");
+} else {
+  alert("Я вас не знаю");
+}
