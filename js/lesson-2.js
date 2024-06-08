@@ -115,26 +115,164 @@
 //рядок з назвою фрукта.
 //Функція рахує і повертає загальну вартість фрукта
 //з таким ім'ям, ціною та кількістю з об'єкта
-const fruits = [
-  { name: "Яблуко", price: 45, quantity: 7 },
-  { name: "Апельсин", price: 60, quantity: 4 },
-  { name: "Банан", price: 125, quantity: 8 },
-  { name: "Груша", price: 350, quantity: 2 },
-  { name: "Виноград", price: 440, quantity: 3 },
-];
+// const fruits = [
+//   { name: "Яблуко", price: 45, quantity: 7 },
+//   { name: "Апельсин", price: 60, quantity: 4 },
+//   { name: "Банан", price: 125, quantity: 8 },
+//   { name: "Груша", price: 350, quantity: 2 },
+//   { name: "Виноград", price: 440, quantity: 3 },
+// ];
 
 
-function calcTotalPrice(fruits, fruitName) {
-  let sum = 0
-  for (const fruit of fruits) {
-    if (fruit.name === fruitName) {
-      sum += fruit.price * fruit.quantity
-    }
-  }
-  return sum
-}
+// function calcTotalPrice(fruits, fruitName) {
+//   let sum = 0
+//   for (const fruit of fruits) {
+//     if (fruit.name === fruitName) {
+//       sum += fruit.price * fruit.quantity
+//     }
+//   }
+//   return sum
+// }
 
-console.log(calcTotalPrice(fruits, "Апельси"));
+// console.log(calcTotalPrice(fruits, "Апельси"));
+
+
+//4. Створіть об'єкт calculator з трьомя методами
+//read(a, b) - приймає два аргумента і зберігає їх
+//як властивості об'єкта
+//sum() повертає сумму збереженних значень (з перевіркою на наявність властивостей в об'єкті)
+//mult() перемножає збереженні значення і повертає результат (з перевіркою на наявність властивостей в об'єкті)
+
+
+// const calculator = {
+//     read(a, b) {
+//         this.valueA = a;
+//         this.valueB = b; 
+//     },
+//     sum() {
+//         if (this.valueA && this.valueB) {
+//             return this.valueA + this.valueB;
+//         }
+//         return 'Value not found!';
+//     },
+//     mult() {
+//         if (this.valueA && this.valueB) {
+//             return this.valueA * this.valueB;
+//         }
+//         return 'Value not found!';
+//     }
+// }
+
+// // calculator.read(12, 34)
+// console.log(calculator.sum());
+// console.log(calculator.mult());
+
+
+
+// 6. Створіть телефонну книгу - об'єкт phonebook,
+// у якого є властивість contacts (список контактів)
+// та методи управління книгою:
+// add(data) - приймає об'єкт data, де зберігається
+// name, email, category, id, createdAt
+// (name i email - обов'язкові параметри, які треба передавати
+// при додаванні нового контакта,
+// category - може передаватись чи ні, якщо ні - має
+// приймати значення "default",
+// id та createdAt генеруються відповідними методами:
+// generateId() і getDate());
+// list() - виводить список контактів у вигляді таблиці;
+// filtered(category) - фільтрує контактів по обраній категорії (друзі, робота і т.д.)
+// delete(name) - видаляє контакт з заданим ім'ям;
+// updateName(oldName, newName) - зиінює ім'я контакта;
+const phonebook = {
+  contacts: [],
+    add(data) {
+        const newContact = {
+            name: data.name,
+            email: data.email,
+            category: data.category ?? 'default',
+            id: this.generateId(),
+            createdAt: this.getDate(),
+        }
+        this.contacts.push(newContact);
+  },
+    list() {
+        console.table(contacts);
+  },
+  filtered(category) {},
+  delete(name) {},
+    updateName(oldName, newName) {
+        for (const contact of this.contacts) {
+            if (contact.name === oldName) {
+                contact.name = newName;
+          }
+      }
+  },
+  generateId() {
+    return "#" + Math.random().toString(36).substr(2, 9);
+  },
+  getDate() {
+    return Date.now();
+  },
+};
+
+phonebook.add({
+  name: "Mango",
+  email: "mango@mail.com",
+  category: "friends",
+});
+phonebook.add({
+  name: "Poly",
+  email: "poly@hotmail.com",
+});
+phonebook.add({
+  name: "Katy",
+  email: "katy@hotmail.com",
+  category: "friends",
+});
+phonebook.updateName("Poly", "Sara");
+
+console.log(phonebook);
+
+// Home Work
+// // Написати ф-цію, яка прибиратиме з масиву всі значення, які перетворюються на false
+// // undefined, null, false, '', 0, NaN
+// // const array = [
+// //   1,
+// //   0,
+// //   54,
+// //   "doc",
+// //   null,
+// //   "jpg",
+// //   undefined,
+// //   "",
+// //   "png",
+// //   "exe",
+// //   false,
+// //   "mp4",
+// //   NaN,
+// //   "hbs",
+// // ];
+// // Напишіть функцію, яка перевіряє, чи є
+// // рядок (без урахування регістра) паліндромом.
+// // Паліндром — це слово, число, фраза або інша
+// // послідовність символів, яка читається як
+// // в обратному, так і в прямому напрямку, наприклад,
+// // madam або racecar
+// // console.log(isPalindrome("Abba"), true);
+// // console.log(isPalindrome("hello"), false));
+// //2. У нас є об'єкт, в якому зберігаються зарплати
+// //нашої команди
+// //Напишіть код для додавання усіх зарплат та
+// //збережіть його результат в змінній sum.
+// //Якщо об'єкт salaries пустий, то результат має бути 0
+// const salaries = {
+//   Mango: 100,
+//   Poly: 160,
+//   Ajax: 1470,
+// };
+
+
 
 
 
