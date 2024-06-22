@@ -92,19 +92,46 @@ const users = [
 // *зробити функцію універсальною, щоб вона повертала
 // масив значень будь-якої заданої властивості
 
-function getUserNames(users) {
-  return users.map((user) => user.name);
-}
+// function getUserNames(users) {
+//   return users.map((user) => user.name);
+// }
 
-console.log(getUserNames(users));
+// console.log(getUserNames(users));
 
-function getUserRandomProps(users, prop) {
-  for (const user of users) {
-    if (user[prop] === undefined) {
-      return "Prop not found";
-    }
-  }
-  return users.map((user) => user[prop]);
-}
+// function getUserRandomProps(users, prop) {
+//   for (const user of users) {
+//     if (user[prop] === undefined) {
+//       return "Prop not found";
+//     }
+//   }
+//   return users.map((user) => user[prop]);
+// }
 
-console.log(getUserRandomProps(users, "gend"));
+// console.log(getUserRandomProps(users, "gend"));
+
+
+// Отримати масив імен користувачів по статі (властивість gender)
+// console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
+
+
+// function getUsersWithGender(users, gender) {
+// 1)
+// return users.filter((user) => user.gender === gender).map((user) => user.name)
+// 2)
+// return users.reduce((names, user) => {
+//   if (user.gender === gender) {
+//     names.push(user.name)
+//   }
+//   return names
+// }, [])
+// 3)
+
+//   return users.reduce((names, user) => user.gender === gender ? [...names, user.name] : names, [])
+
+// }
+
+
+// console.log(getUsersWithGender(users, 'male'));
+
+
+
