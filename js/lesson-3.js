@@ -192,40 +192,119 @@ const users = [
 //Додай методи addNote(note), removeNote(noteText)
 //updatePriority(noteText, newPriority)
 
-class Notes {
-  static Priority = {
-    HIGHT: "hight",
-    MIDDLE: "middle",
-    LOW: "low",
-  };
-  constructor() {
-    this.items = [];
-  }
-  addNote(note) {
-    this.items.push(note);
+// class Notes {
+//   static Priority = {
+//     HIGHT: "hight",
+//     MIDDLE: "middle",
+//     LOW: "low",
+//   };
+//   constructor() {
+//     this.items = [];
+//   }
+//   addNote(note) {
+//     this.items.push(note);
+//   }
+
+//   removeNote(noteText) {
+//     this.items = this.items.filter((note) => note.text !== noteText);
+//   }
+
+//   updatePriority(noteText, newPriority) {
+//     const note = this.items.find((note) => note.text === noteText);
+//     if (note) {
+//       note.priority = newPriority;
+//     }
+//   }
+// }
+
+// const note = new Notes();
+// note.addNote({ text: "Note1", priority: Notes.Priority.LOW });
+// note.addNote({ text: "Note2", priority: Notes.Priority.LOW });
+// note.addNote({ text: "Note3", priority: Notes.Priority.HIGHT });
+// note.updatePriority({ text: "Note2", newPriority: Notes.Priority.MIDDLE });
+// note.updatePriority({ text: "Note3", newPriority: Notes.Priority.MIDDLE });
+// note.removeNote("Note1");
+
+// console.log(note);
+
+// const note2 = new Notes();
+// console.log(note2);
+
+//2. Напиши класс Client який створює об'єкт
+//із властивостями login, email
+//Об'яви приватні властивості #login і #email,
+//доступ до яких зроби через геттер и сеттер:
+// get getClientData() має повертати об'єкт з переліченими властивостями
+// set changeEmail(newEmail) перезаписує пошту користувача
+
+
+
+// class Client {
+//   #login
+//   #email
+//   constructor(login, email) {
+//     this.#login = login
+//     this.#email = email
+//   }
+
+//   get getClientData() {
+//     return {
+//       clientLogin: this.#login,
+//       clientEmail: this.#email
+//     }
+//   }
+
+//   set changeEmail(newEmail) {
+//     this.#email = newEmail
+//   }
+
+// }
+
+
+// const client = new Client("Yaroslav", "sanenss@gmai.com")
+
+// console.log(client);
+
+// console.log(client.getClientData);
+
+// client.changeEmail = "Yaroslav@gmai.com"
+
+// console.log(client.getClientData.clientEmail);
+
+// 4. Створити клас Worker, у якого є властивості name, age, salary.
+//У класу Worker є метод getSalary, який повертає повідомлення
+//"Worker <name> has salary <salary> dollars"
+//Створити клас WorkerPosition, у якого є властивість position
+//і який успадковує клас Worker, додаючи метод getPosition
+// який повертає повідомлення "<name> works as <position>"
+
+
+class Worker {
+  constructor(name, age, salary) {
+    this.name = name
+    this.age = age
+    this.salary = salary
   }
 
-  removeNote(noteText) {
-    this.items = this.items.filter((note) => note.text !== noteText);
+  getSalary() {
+    return `Worker ${this.name} has salary ${this.salary}  dollars`
   }
 
-  updatePriority(noteText, newPriority) {
-    const note = this.items.find((note) => note.text === noteText);
-    if (note) {
-      note.priority = newPriority;
-    }
+}
+
+class WorkerPosition extends Worker {
+  constructor(name, age, salary, position) {
+    super(name, age, salary)
+    this.position = position
+  }
+
+  getPosition() {
+    return `${this.name} works as ${this.position} `
   }
 }
 
-const note = new Notes();
-note.addNote({ text: "Note1", priority: Notes.Priority.LOW });
-note.addNote({ text: "Note2", priority: Notes.Priority.LOW });
-note.addNote({ text: "Note3", priority: Notes.Priority.HIGHT });
-note.updatePriority({ text: "Note2", newPriority: Notes.Priority.MIDDLE });
-note.updatePriority({ text: "Note3", newPriority: Notes.Priority.MIDDLE });
-note.removeNote("Note1");
 
-console.log(note);
+const worker = new WorkerPosition("Yaroslav", 29, 1000, "Developer")
 
-const note2 = new Notes();
-console.log(note2);
+console.log(worker);
+console.log(worker.getSalary());
