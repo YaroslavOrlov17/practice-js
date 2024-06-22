@@ -136,11 +136,50 @@ const users = [
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum',
 // 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
-function getSortedUniqueSkills(users) {
-  return users
-    .flatMap((user) => user.skills)
-    .filter((skill, index, array) => array.indexOf(skill) === index)
-    .toSorted((a, b) => a.localeCompare(b));
-}
+// function getSortedUniqueSkills(users) {
+//   return users
+//     .flatMap((user) => user.skills)
+//     .filter((skill, index, array) => array.indexOf(skill) === index)
+//     .toSorted((a, b) => a.localeCompare(b));
+// }
 
-console.log(getSortedUniqueSkills(users));
+// console.log(getSortedUniqueSkills(users));
+
+//Створити статистику - об'єкт, у якому вказується кількість тегів
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
+
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+function statTweets(tweets) {
+  const stats = {};
+  tweets
+    .flatMap((tweet) => tweet.tags)
+    .forEach((tag) => {
+      console.log(tag, stats[tag]);
+      stats[tag] ? (stats[tag] += 1) : (stats[tag] = 1);
+      console.log(stats);
+    });
+
+  return stats;
+
+  // 2)
+  // return tweets
+  //   .flatMap((tweet) => tweet.tags)
+  //   .reduce(
+  //     (stats, tag) => ({ ...stats, [tag]: stats[tag] ? stats[tag] + 1 : 1 }),
+  //     {}
+  //   );
+}
+console.log(statTweets(tweets));
