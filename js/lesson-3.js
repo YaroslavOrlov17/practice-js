@@ -109,10 +109,8 @@ const users = [
 
 // console.log(getUserRandomProps(users, "gend"));
 
-
 // Отримати масив імен користувачів по статі (властивість gender)
 // console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
-
 
 // function getUsersWithGender(users, gender) {
 // 1)
@@ -130,8 +128,19 @@ const users = [
 
 // }
 
-
 // console.log(getUsersWithGender(users, 'male'));
 
+// Отримати масив всіх навичок усіх користувачів (поле skills), при цьому не повинно бути
+// повторювань навичок і вони мають бути відсортовані в алфавітному порядку.
+// console.log(getSortedUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum',
+// 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
+function getSortedUniqueSkills(users) {
+  return users
+    .flatMap((user) => user.skills)
+    .filter((skill, index, array) => array.indexOf(skill) === index)
+    .toSorted((a, b) => a.localeCompare(b));
+}
 
+console.log(getSortedUniqueSkills(users));
