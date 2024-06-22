@@ -154,32 +154,78 @@ const users = [
 //   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
 // ];
 
-const tweets = [
-  { id: "000", likes: 5, tags: ["js", "nodejs"] },
-  { id: "001", likes: 2, tags: ["html", "css"] },
-  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-  { id: "003", likes: 8, tags: ["css", "react"] },
-  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-];
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
 
-function statTweets(tweets) {
-  const stats = {};
-  tweets
-    .flatMap((tweet) => tweet.tags)
-    .forEach((tag) => {
-      console.log(tag, stats[tag]);
-      stats[tag] ? (stats[tag] += 1) : (stats[tag] = 1);
-      console.log(stats);
-    });
+// function statTweets(tweets) {
+//   const stats = {};
+//   tweets
+//     .flatMap((tweet) => tweet.tags)
+//     .forEach((tag) => {
+//       console.log(tag, stats[tag]);
+//       stats[tag] ? (stats[tag] += 1) : (stats[tag] = 1);
+//       console.log(stats);
+//     });
 
-  return stats;
+//   return stats;
 
-  // 2)
-  // return tweets
-  //   .flatMap((tweet) => tweet.tags)
-  //   .reduce(
-  //     (stats, tag) => ({ ...stats, [tag]: stats[tag] ? stats[tag] + 1 : 1 }),
-  //     {}
-  //   );
+// 2)
+// return tweets
+//   .flatMap((tweet) => tweet.tags)
+//   .reduce(
+//     (stats, tag) => ({ ...stats, [tag]: stats[tag] ? stats[tag] + 1 : 1 }),
+//     {}
+//   );
+// }
+// console.log(statTweets(tweets));
+
+//3. Напиши класс Notes який управляє коллекцієй нотаток у
+//властивості items.
+//Нотатка це  об'єкт з властивостями text, priority
+//Додай класу статичну властивість Priority,
+//в якій буде зберігатись об'єкт з пріорітетами ("hight", "middle", "low").
+//Додай методи addNote(note), removeNote(noteText)
+//updatePriority(noteText, newPriority)
+
+class Notes {
+  static Priority = {
+    HIGHT: "hight",
+    MIDDLE: "middle",
+    LOW: "low",
+  };
+  constructor() {
+    this.items = [];
+  }
+  addNote(note) {
+    this.items.push(note);
+  }
+
+  removeNote(noteText) {
+    this.items = this.items.filter((note) => note.text !== noteText);
+  }
+
+  updatePriority(noteText, newPriority) {
+    const note = this.items.find((note) => note.text === noteText);
+    if (note) {
+      note.priority = newPriority;
+    }
+  }
 }
-console.log(statTweets(tweets));
+
+const note = new Notes();
+note.addNote({ text: "Note1", priority: Notes.Priority.LOW });
+note.addNote({ text: "Note2", priority: Notes.Priority.LOW });
+note.addNote({ text: "Note3", priority: Notes.Priority.HIGHT });
+note.updatePriority({ text: "Note2", newPriority: Notes.Priority.MIDDLE });
+note.updatePriority({ text: "Note3", newPriority: Notes.Priority.MIDDLE });
+note.removeNote("Note1");
+
+console.log(note);
+
+const note2 = new Notes();
+console.log(note2);
