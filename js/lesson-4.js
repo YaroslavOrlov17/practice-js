@@ -9,31 +9,38 @@
 //   console.log(input.value);
 // });
 
-
-
 /*
 Завдання 2
 Після натискання кнопки "SWAP ME" здійснюється обмін вмістом між двома інпутами.
 Ви можете натиснути на неї кілька разів або вручну змінити вміст інпутів.
 */
 
+// const btn = document.querySelector("#swapButton")
 
-const btn = document.querySelector("#swapButton")
+// const leftSwapInput = document.querySelector("#leftSwapInput")
+// const rightSwapInput = document.querySelector("#rightSwapInput")
 
-const leftSwapInput = document.querySelector("#leftSwapInput")
-const rightSwapInput = document.querySelector("#rightSwapInput")
+// function handleClick(event) {
+//   const leftInputValue = leftSwapInput.value
+//   const rightSwapInputValue = rightSwapInput.value
 
+//   leftSwapInput.value = rightSwapInputValue
+//   rightSwapInput.value = leftInputValue
 
-function handleClick(event) {
-  const leftInputValue = leftSwapInput.value
-  const rightSwapInputValue = rightSwapInput.value
+// }
 
-  leftSwapInput.value = rightSwapInputValue
-  rightSwapInput.value = leftInputValue
+// btn.addEventListener("click", handleClick)
 
+const btn = document.querySelector("#passwordButton");
+const input = document.querySelector("#passwordInput");
 
-
-}
-
-btn.addEventListener("click", handleClick)
-
+btn.addEventListener("click", () => {
+  if (input.type === "text") {
+    input.setAttribute("type", "password");
+    btn.textContent = "Розкрити";
+  } else {
+    input.setAttribute("type", "text");
+    btn.textContent = "Приховати";
+  }
+  // console.log(input.type);
+});
