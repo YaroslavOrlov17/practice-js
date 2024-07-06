@@ -31,16 +31,61 @@
 
 // btn.addEventListener("click", handleClick)
 
-const btn = document.querySelector("#passwordButton");
-const input = document.querySelector("#passwordInput");
+// const btn = document.querySelector("#passwordButton");
+// const input = document.querySelector("#passwordInput");
 
-btn.addEventListener("click", () => {
-  if (input.type === "text") {
-    input.setAttribute("type", "password");
-    btn.textContent = "Розкрити";
-  } else {
-    input.setAttribute("type", "text");
-    btn.textContent = "Приховати";
-  }
-  // console.log(input.type);
-});
+// btn.addEventListener("click", () => {
+//   if (input.type === "text") {
+//     input.setAttribute("type", "password");
+//     btn.textContent = "Розкрити";
+//   } else {
+//     input.setAttribute("type", "text");
+//     btn.textContent = "Приховати";
+//   }
+//   // console.log(input.type);
+// });
+
+/*
+Завдання 3
+Кнопка "Приховати" ховає текст і замінює назву кнопки на
+"Розкрити", при повторному натисканні текст знову стає доступним
+і кнопка набуває початкового вигляду.
+*/
+/*
+
+
+
+Завдання 4
+Кнопка "Зменшити" робить квадрат менше на 10 пікселів,  "Збільшити" - більше на 10 пікселів.
+*/
+
+
+
+const box = document.querySelector("#box")
+
+const decreaseBtn = document.querySelector("#decrease")
+const increaseBtn = document.querySelector("#increase")
+
+function handleClickdecrease(event) {
+  boxWidth -= 10
+  boxHeight -= 10
+  box.style.width = `${boxWidth}px`
+  box.style.height = `${boxHeight}px`
+}
+
+function handleClickincrease(event) {
+  boxWidth += 10
+  boxHeight += 10
+  box.style.width = `${boxWidth}px`
+  box.style.height = `${boxHeight}px`
+}
+
+decreaseBtn.addEventListener("click", handleClickdecrease)
+
+
+
+increaseBtn.addEventListener("click", handleClickincrease)
+
+let boxWidth = parseInt(getComputedStyle(box).width)
+let boxHeight = parseInt(getComputedStyle(box).height)
+
