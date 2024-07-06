@@ -59,33 +59,55 @@
 Кнопка "Зменшити" робить квадрат менше на 10 пікселів,  "Збільшити" - більше на 10 пікселів.
 */
 
+// const box = document.querySelector("#box")
 
+// const decreaseBtn = document.querySelector("#decrease")
+// const increaseBtn = document.querySelector("#increase")
 
-const box = document.querySelector("#box")
+// function handleClickdecrease(event) {
+//   boxWidth -= 10
+//   boxHeight -= 10
+//   box.style.width = `${boxWidth}px`
+//   box.style.height = `${boxHeight}px`
+// }
 
-const decreaseBtn = document.querySelector("#decrease")
-const increaseBtn = document.querySelector("#increase")
+// function handleClickincrease(event) {
+//   boxWidth += 10
+//   boxHeight += 10
+//   box.style.width = `${boxWidth}px`
+//   box.style.height = `${boxHeight}px`
+// }
 
-function handleClickdecrease(event) {
-  boxWidth -= 10
-  boxHeight -= 10
-  box.style.width = `${boxWidth}px`
-  box.style.height = `${boxHeight}px`
+// decreaseBtn.addEventListener("click", handleClickdecrease)
+
+// increaseBtn.addEventListener("click", handleClickincrease)
+
+// let boxWidth = parseInt(getComputedStyle(box).width)
+// let boxHeight = parseInt(getComputedStyle(box).height)
+
+// Завдання 5
+// При натисканні на коло він повинен слідувати за курсором.
+// При повторному натисканні він стає в початкове положення.
+// https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent
+// https://developer.mozilla.org/ru/docs/Web/API/MouseEvent/pageX
+// https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
+
+const circle = document.querySelector(".outerCircle");
+
+function onMouseMove(event) {
+  let left = event.pageX;
+  let top = event.pageY;
+
+  circle.style.left = `${left - 15}px`;
+  circle.style.top = `${top - 15}px`;
 }
 
-function handleClickincrease(event) {
-  boxWidth += 10
-  boxHeight += 10
-  box.style.width = `${boxWidth}px`
-  box.style.height = `${boxHeight}px`
-}
-
-decreaseBtn.addEventListener("click", handleClickdecrease)
-
-
-
-increaseBtn.addEventListener("click", handleClickincrease)
-
-let boxWidth = parseInt(getComputedStyle(box).width)
-let boxHeight = parseInt(getComputedStyle(box).height)
-
+circle.addEventListener("click", () => {
+  if (circle.style.position === "absolute") {
+    circle.style.position = "static";
+    window.removeEventListener("mousemove", onMouseMove);
+    return;
+  }
+  circle.style.position = "absolute";
+  window.addEventListener("mousemove", onMouseMove);
+});
