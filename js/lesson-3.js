@@ -237,8 +237,6 @@ const users = [
 // get getClientData() має повертати об'єкт з переліченими властивостями
 // set changeEmail(newEmail) перезаписує пошту користувача
 
-
-
 // class Client {
 //   #login
 //   #email
@@ -260,7 +258,6 @@ const users = [
 
 // }
 
-
 // const client = new Client("Yaroslav", "sanenss@gmai.com")
 
 // console.log(client);
@@ -278,33 +275,31 @@ const users = [
 //і який успадковує клас Worker, додаючи метод getPosition
 // який повертає повідомлення "<name> works as <position>"
 
+// class Worker {
+//   constructor(name, age, salary) {
+//     this.name = name
+//     this.age = age
+//     this.salary = salary
+//   }
 
-class Worker {
-  constructor(name, age, salary) {
-    this.name = name
-    this.age = age
-    this.salary = salary
-  }
+//   getSalary() {
+//     return `Worker ${this.name} has salary ${this.salary}  dollars`
+//   }
 
-  getSalary() {
-    return `Worker ${this.name} has salary ${this.salary}  dollars`
-  }
+// }
 
-}
+// class WorkerPosition extends Worker {
+//   constructor(name, age, salary, position) {
+//     super(name, age, salary)
+//     this.position = position
+//   }
 
-class WorkerPosition extends Worker {
-  constructor(name, age, salary, position) {
-    super(name, age, salary)
-    this.position = position
-  }
+//   getPosition() {
+//     return `${this.name} works as ${this.position} `
+//   }
+// }
 
-  getPosition() {
-    return `${this.name} works as ${this.position} `
-  }
-}
+// const worker = new WorkerPosition("Yaroslav", 29, 1000, "Developer")
 
-
-const worker = new WorkerPosition("Yaroslav", 29, 1000, "Developer")
-
-console.log(worker);
-console.log(worker.getSalary());
+// console.log(worker);
+// console.log(worker.getSalary());
