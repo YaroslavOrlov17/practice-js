@@ -92,22 +92,56 @@
 // https://developer.mozilla.org/ru/docs/Web/API/MouseEvent/pageX
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 
-const circle = document.querySelector(".outerCircle");
+// const circle = document.querySelector(".outerCircle");
 
-function onMouseMove(event) {
-  let left = event.pageX;
-  let top = event.pageY;
+// function onMouseMove(event) {
+//   let left = event.pageX;
+//   let top = event.pageY;
 
-  circle.style.left = `${left - 15}px`;
-  circle.style.top = `${top - 15}px`;
-}
+//   circle.style.left = `${left - 15}px`;
+//   circle.style.top = `${top - 15}px`;
+// }
 
-circle.addEventListener("click", () => {
-  if (circle.style.position === "absolute") {
-    circle.style.position = "static";
-    window.removeEventListener("mousemove", onMouseMove);
-    return;
+// circle.addEventListener("click", () => {
+//   if (circle.style.position === "absolute") {
+//     circle.style.position = "static";
+//     window.removeEventListener("mousemove", onMouseMove);
+//     return;
+//   }
+//   circle.style.position = "absolute";
+//   window.addEventListener("mousemove", onMouseMove);
+// });
+
+
+/*
+Задача 6
+Коло має зникати при наведенні на нього.
+При цьому позиція сусідніх кіл має залишатися незмінною.
+*/
+
+
+const grid = document.querySelector(".grid")
+
+
+grid.addEventListener("mouseover", (event) => {
+  const mouseOn = event.target
+  if (!mouseOn.classList.contains("gridItem")) {
+    return
   }
-  circle.style.position = "absolute";
-  window.addEventListener("mousemove", onMouseMove);
-});
+
+  mouseOn.style.opacity = "0"
+
+})
+
+grid.addEventListener("mouseout", (event) => {
+  const mouseOn = event.target
+  if (!mouseOn.classList.contains("gridItem")) {
+    return
+  }
+  mouseOn.style.opacity = "1"
+
+})
+
+
+
+
